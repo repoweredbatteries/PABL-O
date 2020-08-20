@@ -13,6 +13,8 @@ To do:
 -Add SD card recording code
 -Add rotary encoder code
 -Create exclusion of SD recording when number of cycles is <=2
+-add charge discharge capacity comparison to find cell charging efficiency (indirectly the quality of the cell / heating)
+-add IR calculation
 -Clean up code
 -Improve iterupt routine (sometimes the rotary encoder is non-responsive in the original code that is to be integrated)
 
