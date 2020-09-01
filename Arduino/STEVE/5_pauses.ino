@@ -1,14 +1,23 @@
 void startpause() {
 unsigned long timer;
  timer = millis();
-  while (millis() < (timer + pollTime)) {
+  while (millis() < (timer + (pollTime - 100))) {
+    buttonpickup();
+  }  
+};
+
+void shortpause() {
+unsigned long timer;
+ timer = millis();
+  while (millis() < (timer + 100)) {
     buttonpickup();
   }  
 };
 
 void restr() {
  unsigned long timer;
-    digitalWrite( relay1pin, HIGH ); //change to  nothing state as here the NC goes to center tap of relay 2 and
+    digitalWrite( chrgpin, LOW ); //change to  nothing state as here the NC goes to center tap of relay 2 and
+    digitalWrite( dschrgpin, LOW );
       timer = millis();
       while (millis() < (timer + 2000)) {
         Refresh_V_C_OLED();
@@ -17,8 +26,9 @@ void restr() {
 
 void longrestr() {
  unsigned long timer;
-    digitalWrite( relay1pin, HIGH ); //change to  nothing state as here the NC goes to center tap of relay 2 and
-      timer = millis();
+    digitalWrite( chrgpin, LOW ); //change to  nothing state as here the NC goes to center tap of relay 2 and
+    digitalWrite( dschrgpin, LOW );      
+    timer = millis();
       while (millis() < (timer + 10000)) {
         Refresh_V_C_OLED();
       }  
@@ -26,7 +36,8 @@ void longrestr() {
 
 void minrestr() {
  unsigned long timer;
-    digitalWrite( relay1pin, HIGH ); //change to  nothing state as here the NC goes to center tap of relay 2 and
+    digitalWrite( chrgpin, LOW ); //change to  nothing state as here the NC goes to center tap of relay 2 and
+    digitalWrite( dschrgpin, LOW );
       timer = millis();
       while (millis() < (timer + 60000)) {
         Refresh_V_C_OLED();
@@ -35,9 +46,20 @@ void minrestr() {
 
 void hrrestr() {
  unsigned long timer;
-    digitalWrite( relay1pin, HIGH ); //change to  nothing state as here the NC goes to center tap of relay 2 and
+    digitalWrite( chrgpin, LOW ); //change to  nothing state as here the NC goes to center tap of relay 2 and
+    digitalWrite( dschrgpin, LOW );
       timer = millis();
       while (millis() < (timer + 3600000)) {
+        Refresh_V_C_OLED();
+      }  
+};
+
+void dayrestr() {
+ unsigned long timer;
+    digitalWrite( chrgpin, LOW ); //change to  nothing state as here the NC goes to center tap of relay 2 and
+    digitalWrite( dschrgpin, LOW );
+      timer = millis();
+      while (millis() < (timer + 86400000)) {
         Refresh_V_C_OLED();
       }  
 };

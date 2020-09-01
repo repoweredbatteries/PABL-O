@@ -1,3 +1,4 @@
+/*
 void writetofile() {
   myFile = SD.open( "test.txt", FILE_WRITE );
   if ( myFile ) {
@@ -17,3 +18,4 @@ void writetofile() {
     Serial.println( F ( "error opening test.txt " ) );
   };
 }
+*/

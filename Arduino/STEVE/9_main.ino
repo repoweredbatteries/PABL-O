@@ -1,79 +1,49 @@
-
-
 void loop(  ) {
-int k = 0;
-int i = 0;
 
-while (areweago == 1){
-while ( Times < Cycles) {
-  
- 
- while ( State == 0 ) { //discharge
-    digitalWrite( relay1pin, LOW );
-    digitalWrite( relay2pin, HIGH );
-  while (i < (10000 / pollTime)) {//while not enough checks have been run
-     i = i + 1;
-   Refresh_V_C_OLED();
-   PowerD +=  ( V * C );
-   writetofile();
-   startpause();
-  }
+startpause();
+int k=0;
 
-  i = 0;
-    restr();
+while (areweago == 0){
+buttonpickup ();
+}
+
+//start with a charge to be full
+State = 1;
+digitalWrite( chrgon, HIGH );
+chargeroutine ();
+
+dischargestep = 1;
+State = 0;
+digitalWrite( chrgon, LOW );
+dischargeroutine();
     
-  if ( ( analogRead( A0 )*0.0048828125 ) < MinV ) { //if discharging and fall below 2v
-    State = 1; //change to charging  
-    PowerC = 0;  
-    
-     //change to  nothing and hold a minute to let the battery cool a bit
-    longrestr();
-    k=0;
-    while (k < (10000 / pollTime)) { //small routine to delay by 10 seconds while running the startpause to find interrupts
-      k += 1;
-      startpause();
-     }
-    digitalWrite( relay1pin, LOW );
-    digitalWrite( relay2pin, LOW );
-  }
-  else { //return relays to charging state
-      digitalWrite( relay1pin, LOW );
-      digitalWrite( relay2pin, HIGH );
-      Refresh_V_C_OLED();
-      }
- }
+noload ();
+MaxV = StoreV;;
+digitalWrite( chrgon, HIGH );
+chargeroutine ();
 
-while ( State == 1 ) { //whilecharging 
-    digitalWrite( relay1pin, LOW );//make sure actually charge to avoid accidental overdischarge bug I have not yet pinpointed
-    digitalWrite( relay2pin, LOW );
-  while (i < (10000 / pollTime)) {//while not enough checks have been run
-  i = i + 1;
-    Refresh_V_C_OLED(); //gets charging voltage
-    PowerC = PowerC + ( V * C ); //calculate Wh, counted in Ws/ number of polltime in a second, conversion to Wh done at display to retain values
-    writetofile();
-    startpause();
-  }
-    i = 0;
-    restr();
-
-    if ( ( analogRead( A0 )*0.0048828125 ) > MaxV ) { //and full
-      State = 0; //change to discharging
-      Times += 1;
-      PowerD = 0;
-
-      digitalWrite( relay1pin, LOW );
-      digitalWrite( relay2pin, HIGH );
-      Refresh_V_C_OLED();
-      }
-    else { //return relays to charging state
-      digitalWrite( relay1pin, LOW );
-      digitalWrite( relay2pin, LOW );
-      Refresh_V_C_OLED(); // gets charging voltage
-      }
-  }
-  startpause();
-}//closes while in number of cycles
-}//closes the areweago check
+//compute grade here based on collected data, 
+//capacity as %, <70% D, 75%, C, 80% B, 85% A, >89% A+
+//7.26 is nominal wh capacity
+//time to 3v, do math on sag and such... use empirical data collected to find out which vsag indicated issues
+//closes the areweago check
 //Make sure the device doesn't just discharge itself when it is done or paused
-  restr(); //keep doing the cycle number check and control the refresh rate
+  noload ();
+//  State = 2;
+//  vend = 99; //flag that all is done and now waiting for an hour to let the battery stabilize to measure end voltage
+//  hrrestr();//wait 2 hours. In testing, saw a voltage bounce-back during that subsequent hour.
+//  hrrestr();
+//  vend = ( analogRead( A0 )*0.004883 );
+//  vday = 99;
+//  dayrestr();
+//  vday = ( analogRead( A0 )*0.004883 );
+//  State = 3;
+
+//  Refresh_V_C_OLED();
+
+int neverend = 1;
+while (neverend == 1) {longrestr();};
+
 }//closes loop
+
+//change to do only 2 currents, wait 24h and check voltage change?

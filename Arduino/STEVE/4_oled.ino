@@ -1,35 +1,74 @@
-void Refresh_V_C_OLED() {
-   V = ( analogRead( A0 )*0.0048828125 );
-   V = abs(V) + vadj;
-   C = (analogRead( A1 ) *0.048828125) - 24.9;
-   C = abs(C) + iadj;
-   //-0.04 and -0.1 being on the abs instead of the measurement helps buffer the jitter
+
+void Refresh_V_C_OLED() { //C refreshed separately to get accurate charge current
+  V = ( adc.read( A0 )*0.0048875855327468 );
+  V = abs(V) + vadj;
+  C = (adc.read( A1 ) *0.0048875855327468) - 24.9;
+  C = abs(C) + iadj;
 
   oled.clear();
-  // first row
-  oled.print("Cycles: ");
-  oled.print(Cycles - 1);
-  oled.print(" Done: ");
-  oled.println(Times - 1); //-1 because first discharge is to set the slate
 
- if (State == 0){
-  oled.println("Discharging at ");
+  if (State == 1) {
+    oled.print("C ");    
   }
-
-  else {
-  oled.println("Charging at ");    
+  else if (State == 0) {
+    oled.print("D ");
   }
-  oled.print(C, 2);
-  oled.print("A ");
-  oled.print(V, 2);
-  oled.println("V");
+  else if (State == 2) {
+    oled.print("F ");
+  }
+  else if (State == 2) {
+    oled.print("E ");
+  }
   
-  oled.print("C:");
-  oled.print((PowerC / 3600  * ( float(pollTime) / 1000 )), 3);
-  oled.print("Wh D:");
-  oled.print((PowerD / 3600  * ( float(pollTime) / 1000 )), 3);
-  Serial.println(PowerD);
-  oled.println("Wh");
+  oled.print("V: ");
+  oled.print(V, 2);
+  oled.print(" C: ");
+  oled.println(C, 2);
+  oled.print((PowerTemp/ 3600  * ( float(pollTime) / 1000 )), 2);
+  oled.print("Wh");
 
-buttonpickup();
-};
+  int pwm = analogRead(A6);
+  pwm = map(pwm,0,1023,0,255);
+
+if (((PowerTemp/ 3600  * ( float(pollTime) / 1000 )), 2) < 10) {
+  if (((PowerTemp/ 3600  * ( float(pollTime) / 1000 )), 2) > 5.2) {
+    oled.print("! ");
+  }
+  else {oled.print(" ");};
+  oled.print(PctCapacity, 0);
+  oled.print("%");
+  oled.print((AhTemp/ 3600  * ( float(pollTime) / 1000 )), 2);
+  oled.print("Ah");
+  if (AhTemp > 1.43) {
+    oled.print("! ");
+  }
+  else {oled.print(" ");};
+  oled.print(PctCapacityAh, 0);
+  oled.println("%");
+}
+
+if (((PowerTemp/ 3600  * ( float(pollTime) / 1000 )), 2) > 10) {
+  if (((PowerTemp/ 3600  * ( float(pollTime) / 1000 )), 2) > (5.2*8)) {
+    oled.print("! ");
+  }
+  else {oled.print(" ");};
+  oled.print((PctCapacity/8), 0);
+  oled.print("%");
+  oled.print((AhTemp/ 3600  * ( float(pollTime) / 1000 )), 2);
+  oled.print("Ah");
+  if (AhTemp > (1.43*8)) {
+    oled.print("! ");
+  }
+  else {oled.print(" ");};
+  oled.print((PctCapacityAh/8), 0);
+  oled.println("%");
+}
+
+  oled.print("Type: ");
+  oled.print(battype);
+  oled.print(" V:");
+  oled.print(MinV);
+  oled.print("-");
+  oled.print(MaxV);
+
+}
