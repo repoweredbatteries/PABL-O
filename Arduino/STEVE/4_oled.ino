@@ -16,9 +16,6 @@ void Refresh_V_C_OLED() { //C refreshed separately to get accurate charge curren
   else if (State == 2) {
     oled.print("F ");
   }
-  else if (State == 2) {
-    oled.print("E ");
-  }
   
   oled.print("V: ");
   oled.print(V, 2);

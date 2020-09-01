@@ -8,6 +8,9 @@
  *A5 OLED_SLC
  *A6 Discharge PWM control through pot
  *A7 TMP2 / AUX2 - near battery
+ *D5 is charge control
+ *D7 is the dc-dc enable
+ *D9 is the discharge enable
 *charge
 *IR calc - Sag (aka delta V) = DCIR (in ohms) x load (in amps).
 *Charge

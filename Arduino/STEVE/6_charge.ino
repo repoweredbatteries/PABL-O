@@ -20,7 +20,7 @@ while ( State == 1 ) { //whilecharging
       State = 0; //change to discharging      
       Refresh_V_C_OLED();
       }
-    else { //return relays to charging state
+    else { //return fets to charging state
       digitalWrite( chrgpin, HIGH );
       digitalWrite( dschrgpin, LOW );
       Refresh_V_C_OLED(); // gets charging voltage

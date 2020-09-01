@@ -16,7 +16,7 @@ unsigned long timer;
 
 void restr() {
  unsigned long timer;
-    digitalWrite( chrgpin, LOW ); //change to  nothing state as here the NC goes to center tap of relay 2 and
+    digitalWrite( chrgpin, LOW ); 
     digitalWrite( dschrgpin, LOW );
       timer = millis();
       while (millis() < (timer + 2000)) {
@@ -26,7 +26,7 @@ void restr() {
 
 void longrestr() {
  unsigned long timer;
-    digitalWrite( chrgpin, LOW ); //change to  nothing state as here the NC goes to center tap of relay 2 and
+    digitalWrite( chrgpin, LOW ); 
     digitalWrite( dschrgpin, LOW );      
     timer = millis();
       while (millis() < (timer + 10000)) {
@@ -36,7 +36,7 @@ void longrestr() {
 
 void minrestr() {
  unsigned long timer;
-    digitalWrite( chrgpin, LOW ); //change to  nothing state as here the NC goes to center tap of relay 2 and
+    digitalWrite( chrgpin, LOW ); 
     digitalWrite( dschrgpin, LOW );
       timer = millis();
       while (millis() < (timer + 60000)) {
@@ -46,7 +46,7 @@ void minrestr() {
 
 void hrrestr() {
  unsigned long timer;
-    digitalWrite( chrgpin, LOW ); //change to  nothing state as here the NC goes to center tap of relay 2 and
+    digitalWrite( chrgpin, LOW ); 
     digitalWrite( dschrgpin, LOW );
       timer = millis();
       while (millis() < (timer + 3600000)) {
@@ -56,7 +56,7 @@ void hrrestr() {
 
 void dayrestr() {
  unsigned long timer;
-    digitalWrite( chrgpin, LOW ); //change to  nothing state as here the NC goes to center tap of relay 2 and
+    digitalWrite( chrgpin, LOW ); 
     digitalWrite( dschrgpin, LOW );
       timer = millis();
       while (millis() < (timer + 86400000)) {

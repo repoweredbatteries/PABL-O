@@ -15,7 +15,7 @@
 
 SSD1306AsciiAvrI2c oled;
 /*
- *  relay states: low has an LED on and closes the NO, releasing the NC
+ *  fet states: low has an LED on and turns off the FET
  *  create code that tracks how much is charged and discharged and uses it to apply the formula (or part of it) automatically to grade the pack
  *  instead of a pot for continuous choices, maybe use a digital port and either 1 or 1000 cycles? Two digital pots combined for binary options of 1, 10, 100, or 1000????
  */
