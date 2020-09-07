@@ -11,25 +11,18 @@
  *D5 is charge control
  *D7 is the dc-dc enable
  *D9 is the discharge enable
-*charge
-*IR calc - Sag (aka delta V) = DCIR (in ohms) x load (in amps).
-*Charge
-*fast discharge
-*pause
-*mid discharge
-*pause
-*slow discharge
-*pause
-*charge
+ *
+ *
+ *TODO
+ *
+ *A0 isn't reading properly. The voltage has been externally calibrated and set but reads very differently
+ *
+*add IR calc - Sag (aka delta V) = DCIR (in ohms) x load (in amps)
 *
-*
-*state V A
-*total Ah fast Wh slow Wh (indicate the packs ability at high discharge???)
+*do a comparison of total fast discharge Wh vs slow discharge Wh (indicate the packs ability at high discharge???)
+*do a comparison of charge and discharge capacity to indirectly measure heat loss?
 *grade IR
 *
-*Add that A2 now reads for voltages split between 10k/10k 10k/20k and 10k/40k for battery type
 *Add a switch on A3 for either recording the data or not.. or ALWAYS record, but don't crash when there is no SD card
-*rotary indexer increases cycles? button? I say rotary indexer and then it can pickup settings until the areweago state is changed
 *
-*A2 isn't reading properly. The voltage has been externally calibrated and set but reads very differently
 */
