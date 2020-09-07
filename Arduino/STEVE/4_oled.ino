@@ -7,8 +7,10 @@ void Refresh_V_C_OLED() { //C refreshed separately to get accurate charge curren
   C = abs(C) + iadj; */
   V = ( analogRead( A0 )*0.0048875855327468 );
   V = abs(V) + vadj;
-  C = (analogRead( A1 ) *0.0048875855327468) -2.44;
-  C = abs(C) + iadj;
+  C = (((analogRead( A1 )-512) ) *0.048875855327468); 
+  //according to datasheet https://www.digikey.ca/en/products/detail/allegro-microsystems/ACS712ELCTR-20A-T/1284607
+    //need to convert 0-2.5v as being - A and 2.5-5 as being + Amps, it's why it reads around 2.5 when open (0A)  
+  C = abs(C) - abs(iadj);
 
   oled.clear(); 
   

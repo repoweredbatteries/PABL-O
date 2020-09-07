@@ -60,6 +60,9 @@ void setup() {
   Serial.println("voltage type is set");
   digitalWrite( chrgon, LOW ); 
 
+  //set the current sense offset
+  iadj = (((analogRead( A1 )-512) ) *0.048875855327468); 
+
 /* need to find how to make it that this code does not stall the program if it fails
  // SD Card Initialization
   if ( SD.begin(  ) )
