@@ -30,4 +30,6 @@
 *Add that A2 now reads for voltages split between 10k/10k 10k/20k and 10k/40k for battery type
 *Add a switch on A3 for either recording the data or not.. or ALWAYS record, but don't crash when there is no SD card
 *rotary indexer increases cycles? button? I say rotary indexer and then it can pickup settings until the areweago state is changed
+*
+*A2 isn't reading properly. The voltage has been externally calibrated and set but reads very differently
 */

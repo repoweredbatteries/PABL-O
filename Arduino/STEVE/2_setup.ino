@@ -1,8 +1,20 @@
 
 
 void setup() {
+  Wire.begin();
+  Wire.setClock(400000L);
+  
+  Serial.begin( 9600 ); 
+  Serial.println("on");
+//CODE CRASHING HERE WITH OLED INITIALIZATION. Very strange since this code is old and unchanged, copied from examples...   
+#if RST_PIN >= 0
+  oled.begin(&Adafruit128x32, I2C_ADDRESS, RST_PIN);
+#else // RST_PIN >= 0
+  oled.begin(&Adafruit128x32, I2C_ADDRESS);
+#endif // RST_PIN >= 0
+  // Call oled.setI2cClock(frequency) to change from the default frequency.
 
-  Serial.begin( 9600 );
+  oled.setFont(Adafruit5x7);
   
   analogReference( DEFAULT );
 
@@ -21,19 +33,19 @@ void setup() {
   pinMode( dschrgpin, OUTPUT );
 
   digitalWrite( chrgpin, LOW ); 
-  digitalWrite( chrgon, LOW ); 
+  digitalWrite( chrgon, HIGH ); 
   digitalWrite( dschrgpin, LOW ); 
-
+  Serial.println("booting");
   oled.print("booting");
 
   //set cutoff voltages based on A2, 40k will give 4v, 20k will give 3.33v, and 10k will give 2.5v
-   if ( ( analogRead( A2 )*0.0048875855327468 ) > 3.5 ){
+  if ( ( analogRead( A2 )*0.0048875855327468 ) < 1 ){
   MaxV = 4.2;
   MinV = 2.9;
   StoreV = 3.87;
   battype = "Li-ion";
   }
-   else if ( ( analogRead( A2 )*0.0048875855327468 ) > 3 ){
+   else if ( ( analogRead( A2 )*0.0048875855327468 ) < 2 ){
   MaxV = 3.6;
   MinV = 2.5;
   StoreV = 3;
@@ -45,14 +57,9 @@ void setup() {
   StoreV = 2.5;
   battype = "LTO";
   }
-  
-#if RST_PIN >= 0
-  oled.begin(&Adafruit128x32, I2C_ADDRESS, RST_PIN);
-#else // RST_PIN >= 0
-  oled.begin(&Adafruit128x32, I2C_ADDRESS);
-#endif // RST_PIN >= 0
-  // Call oled.setI2cClock(frequency) to change from the default frequency.
-oled.setFont(Adafruit5x7);
+  Serial.println("voltage type is set");
+  digitalWrite( chrgon, LOW ); 
+
 /* need to find how to make it that this code does not stall the program if it fails
  // SD Card Initialization
   if ( SD.begin(  ) )
@@ -67,4 +74,5 @@ oled.setFont(Adafruit5x7);
     return;
   }
 */
+Serial.println("setup end");
 }

@@ -1,11 +1,11 @@
+#include <SD.h>
+#include <SPI.h>
+#include <Wire.h>
+#include <SimpleRotary.h>
+#include <Oversampling.h>
 
-//create routine that logs peak current discharge as an indication of IR
 #include <SSD1306Ascii.h>
-#include <SSD1306AsciiAvrI2c.h>
-#include <SSD1306AsciiSoftSpi.h>
-#include <SSD1306AsciiSpi.h>
 #include <SSD1306AsciiWire.h>
-#include <SSD1306init.h>
 
 // 0X3C+SA0 - 0x3C or 0x3Dp
 #define I2C_ADDRESS 0x3C
@@ -13,17 +13,13 @@
 // Define proper RST_PIN if required.
 #define RST_PIN -1
 
-SSD1306AsciiAvrI2c oled;
+SSD1306AsciiWire oled;
 /*
  *  fet states: low has an LED on and turns off the FET
  *  create code that tracks how much is charged and discharged and uses it to apply the formula (or part of it) automatically to grade the pack
  *  instead of a pot for continuous choices, maybe use a digital port and either 1 or 1000 cycles? Two digital pots combined for binary options of 1, 10, 100, or 1000????
  */
-#include <SD.h>
-#include <SPI.h>
-#include <Wire.h>
-#include <SimpleRotary.h>
-#include <Oversampling.h>
+
 
 //volatile byte State = LOW; //another way to make the status var
 boolean areweago=1, State = 0, dischargestep = 1; //state is charge state, areweago is the pause / resume state where 0 is paused
@@ -39,4 +35,4 @@ String Grade = "XXX", battype = "LiFeP04";
 // rotary encoder call; Pin A, Pin B, Button Pin
 SimpleRotary rotary(2,3,4);
 
-Oversampling adc(10, 11, 2); //Adc Bytes 10 or 12, Oversampeling Bytes 11-18, 2 Is avaraging count.
+Oversampling adc(10, 11, 2); //Adc Bytes 10 or 12, Oversampeling Bytes 11-18, 2 Is avaraging count. for now oversampling readings hang, so try again later

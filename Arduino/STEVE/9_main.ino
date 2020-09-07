@@ -1,4 +1,6 @@
 void loop(  ) {
+Serial.println("loop begin");
+Refresh_V_C_OLED();
 
 startpause();
 int k=0;
@@ -9,6 +11,7 @@ buttonpickup ();
 
 //start with a charge to be full
 State = 1;
+Serial.println("turn on DC-DC");
 digitalWrite( chrgon, HIGH );
 chargeroutine ();
 

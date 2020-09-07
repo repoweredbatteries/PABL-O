@@ -2,6 +2,7 @@
 
 void chargeroutine ( ) { 
   int i;
+  Serial.println("chargerouting launched");
 while ( State == 1 ) { //whilecharging 
     digitalWrite( chrgpin, HIGH );
     digitalWrite( dschrgpin, LOW );

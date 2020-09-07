@@ -1,5 +1,6 @@
 void startpause() {
 unsigned long timer;
+Serial.println("startpause function called");
  timer = millis();
   while (millis() < (timer + (pollTime - 100))) {
     buttonpickup();

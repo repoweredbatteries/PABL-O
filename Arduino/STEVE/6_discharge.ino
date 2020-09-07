@@ -1,5 +1,6 @@
 
 void dischargeroutine( ){
+  Serial.println("dischargerouting launched");
     
  while ( State == 0 ) { //discharge
 digitalWrite( chrgpin, LOW ); //discharge 1
