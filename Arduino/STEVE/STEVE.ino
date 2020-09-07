@@ -15,7 +15,6 @@
  *
  *TODO
  *
- *A0 isn't reading properly. The voltage has been externally calibrated and set but reads very differently
  *
 *add IR calc - Sag (aka delta V) = DCIR (in ohms) x load (in amps)
 *
