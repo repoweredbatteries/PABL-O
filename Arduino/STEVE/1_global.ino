@@ -24,13 +24,13 @@ SSD1306AsciiWire oled;
 //volatile byte State = LOW; //another way to make the status var
 boolean areweago=1, State = 0, dischargestep = 1; //state is charge state, areweago is the pause / resume state where 0 is paused
 float V = 0, C = 0;
-float vadj = 0, iadj = -0.06058, vend = 0, vday = 0, pwm;
-int   pollTime = 10000, t23v1 = 0, PctCapacity, PctCapacityAh;
+float vadj = 0, iadj = -0.06058, vend = 0, vday = 0;
+int   pollTime = 10000, t23v1 = 0, PctCapacity, PctCapacityAh, pwmsrc;
 float PowerTemp = 0, AhTemp = 0; //Measured and derived values
 float MaxV = 3.55, MinV = 2, StoreV = 3;
-byte chrgpin = 5, dschrgpin = 9, chrgon = 7; 
+byte chrgpin = 5, dschrgpin = 9, chrgon = 7, pwm = 0; 
 byte rturn, rpush, buttonmode = 0; //states 1 and 2 are CW and CCW rotation
-String Grade = "XXX", battype = "LiFeP04";
+String Grade = "XXX", battype = "LiFeP04", test;
 
 // rotary encoder call; Pin A, Pin B, Button Pin
 SimpleRotary rotary(2,3,4);

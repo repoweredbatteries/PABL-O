@@ -3,8 +3,8 @@ void dischargeroutine( ){
   Serial.println("dischargerouting launched");
     
  while ( State == 0 ) { //discharge
-digitalWrite( chrgpin, LOW ); //discharge 1
-analogWrite( dschrgpin, pwm ); //discharge 1
+digitalWrite( chrgpin, LOW );
+analogWrite( dschrgpin, pwm );
 Refresh_V_C_OLED();
  PowerTemp = PowerTemp + ( V * C ); //calculate Wh, counted in Ws/ number of polltime in a second, conversion to Wh done at display to retain values
  AhTemp   = AhTemp +  C;
@@ -19,13 +19,11 @@ Refresh_V_C_OLED();
     longrestr();
      }
      
-digitalWrite( chrgpin, LOW ); //discharge 1
-analogWrite( dschrgpin, pwm ); //discharge 1
+digitalWrite(chrgpin, LOW ); 
+analogWrite(dschrgpin, pwm );
 shortpause();
 
 Refresh_V_C_OLED();
-PctCapacity = (PowerTemp/ 3600  * ( float(pollTime) / 1000 ))/7.26*100;
-PctCapacityAh = (PowerTemp/ 3600  * ( float(pollTime) / 1000 ))/2.2*100;
 
 startpause();
 }
