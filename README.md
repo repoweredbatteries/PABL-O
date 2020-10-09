@@ -8,6 +8,8 @@ The hardware schematics, BOM, and fabrication files can be found here and is rel
 https://easyeda.com/julien_9465/universal_tester_v7 (old version, confirmed working, but replaced)
 https://easyeda.com/julien_9465/universal_tester_v7_copy (still in progress, but major cost savings implemented)
 
+The hardware can be pre-ordered at https://www.indiegogo.com/projects/steve-the-universal-cell-cycler/x/22837994#/ and will be available at www.batterysupplies.ca after the pre-orders have been sent.
+
 Data collection program:  
 The hardware can be used for cell testing, or data collection. The two modes of operation were in two programs up until now, and we are now working on combining both sets of features. Putting the number of cycles with the rotary encoder to 1 or 2 would prevent the recording of data, making the device function in a cell tester mode for end users. Once enough data has been collected to model outcomes, the predictive model will be part of the cell tester mode to give predictive quality outcomes based on the 1-2 cycles.
 To do:  
