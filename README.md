@@ -6,7 +6,8 @@ There are five main components to the PABL-O project. The hardware (EasyEDA), th
 Hardware:  
 The hardware schematics, BOM, and fabrication files can be found here and is released under the Creative Commons Attribution-NonCommercial 3.0 licensing terms
 https://easyeda.com/julien_9465/universal_tester_v7 (old version, confirmed working, but replaced)
-https://easyeda.com/julien_9465/universal_tester_v7_copy (still in progress, but major cost savings implemented)
+https://easyeda.com/julien_9465/universal_tester_v7_copy (V8 despite what JLCPCB decided to name the link) and
+https://oshwlab.com/julien_9465/dcdc-converter-steve-v1 (offboard dc-dc converter needed for the new less expensive V8)
 
 The hardware can be pre-ordered at https://www.indiegogo.com/projects/steve-the-universal-cell-cycler/x/22837994#/ and will be available at www.batterysupplies.ca after the pre-orders have been sent.
 
