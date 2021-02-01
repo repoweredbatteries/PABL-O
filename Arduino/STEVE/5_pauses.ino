@@ -18,7 +18,7 @@ unsigned long timer;
 void restr() {
  unsigned long timer;
     digitalWrite( chrgpin, LOW ); 
-   analogWrite(dschrgpin, 0);
+    analogWrite(dschrgpin, 0);
       timer = millis();
       while (millis() < (timer + 2000)) {
         Refresh_V_C_OLED();

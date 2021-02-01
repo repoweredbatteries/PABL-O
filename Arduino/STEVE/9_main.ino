@@ -11,19 +11,35 @@ buttonpickup ();
 
 //start with a charge to be full
 State = 1;
+Stage = "C1";
 Serial.println("turn on DC-DC");
 digitalWrite( chrgon, HIGH );
 chargeroutine ();
 
 dischargestep = 1;
 State = 0;
+Stage = "D1";
 digitalWrite( chrgon, LOW );
 dischargeroutine();
-    
-noload ();
-MaxV = StoreV;;
+
+State = 1;
+Stage = "C2";
+Serial.println("turn on DC-DC");
 digitalWrite( chrgon, HIGH );
 chargeroutine ();
+
+noload ();
+State = 0;
+Stage = "IR";
+digitalWrite( chrgon, LOW );
+storageroutine (0.2);
+//implement IR test here
+storageroutine (0.7);
+
+
+//MaxV = StoreV;
+//digitalWrite( chrgon, HIGH );
+//chargeroutine ();
 
 //compute grade here based on collected data, 
 //capacity as %, <70% D, 75%, C, 80% B, 85% A, >89% A+

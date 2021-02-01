@@ -26,11 +26,11 @@ boolean areweago=1, State = 0, dischargestep = 1; //state is charge state, arewe
 float V = 0, C = 0;
 float vadj = 0, iadj = -0.06058, vend = 0, vday = 0;
 int   pollTime = 10000, t23v1 = 0, PctCapacity, PctCapacityAh, pwmsrc;
-float PowerTemp = 0, AhTemp = 0; //Measured and derived values
+float PowerTemp = 0, AhTemp = 0, PowerTemp2 = 0, AhTemp2 = 0; //Measured and derived values
 float MaxV = 3.55, MinV = 2, StoreV = 3;
 byte chrgpin = 5, dschrgpin = 9, chrgon = 7, pwm = 0; 
 byte rturn, rpush, buttonmode = 0; //states 1 and 2 are CW and CCW rotation
-String Grade = "XXX", battype = "LiFeP04", test;
+String Grade = "XXX", battype = "LiFeP04", test, Stage;
 
 // rotary encoder call; Pin A, Pin B, Button Pin
 SimpleRotary rotary(2,3,4);
