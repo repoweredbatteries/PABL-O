@@ -22,6 +22,7 @@ Stage = "D1";
 digitalWrite( chrgon, LOW );
 dischargeroutine();
 
+/*
 State = 1;
 Stage = "C2";
 Serial.println("turn on DC-DC");
@@ -36,6 +37,7 @@ storageroutine (0.2);
 //implement IR test here
 storageroutine (0.7);
 
+*/
 
 //MaxV = StoreV;
 //digitalWrite( chrgon, HIGH );

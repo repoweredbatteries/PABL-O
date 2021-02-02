@@ -49,10 +49,10 @@ void Refresh_V_C_OLED() { //C refreshed separately to get accurate charge curren
   oled.print("-");
   oled.println(MaxV);
 
-  oled.print("D_C=");
+  oled.print("PWM=");
   oled.print(round(pwm/2.55));
   oled.print("% ");
-  oled.print("S_Wh=");
-  oled.print(round(100-(PowerTemp2/PowerTemp*100)));
-  oled.print("% ");
+  //oled.print("S_Wh=");
+  //oled.print(round(100-(PowerTemp2/PowerTemp*100)));
+  //oled.print("% ");
 }

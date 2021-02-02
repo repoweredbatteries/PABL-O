@@ -13,11 +13,12 @@ Refresh_V_C_OLED();
   //writetofile;
     
   if ( ( analogRead( A0 )*0.0048875855327468 ) < MinV ) { //if discharging and fall below minV
-    State = 1; //change to charging  
-    
-     //change to  nothing and hold a minute to let the battery cool a bit
-    longrestr();
-     }
+    restr();
+    if ( ( analogRead( A0 )*0.0048875855327468 ) < MinV ) { //if discharging and fall below minV
+      State = 1; //change to charging  
+      longrestr();
+    }
+    }
      
 digitalWrite(chrgpin, LOW ); 
 analogWrite(dschrgpin, pwm );
