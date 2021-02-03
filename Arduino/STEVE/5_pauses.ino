@@ -18,7 +18,7 @@ unsigned long timer;
 void restr() {
  unsigned long timer;
     digitalWrite( chrgpin, LOW ); 
-    analogWrite(dschrgpin, 0);
+    digitalWrite(dschrgpin, LOW);
       timer = millis();
       while (millis() < (timer + 2000)) {
         Refresh_V_C_OLED();
@@ -28,7 +28,7 @@ void restr() {
 void longrestr() {
  unsigned long timer;
     digitalWrite( chrgpin, LOW ); 
-   analogWrite(dschrgpin, 0);    
+    digitalWrite(dschrgpin, LOW);    
     timer = millis();
       while (millis() < (timer + 10000)) {
         Refresh_V_C_OLED();
@@ -38,7 +38,7 @@ void longrestr() {
 void minrestr() {
  unsigned long timer;
     digitalWrite( chrgpin, LOW ); 
-   analogWrite(dschrgpin, 0);
+    digitalWrite(dschrgpin, LOW);
       timer = millis();
       while (millis() < (timer + 60000)) {
         Refresh_V_C_OLED();
@@ -48,7 +48,7 @@ void minrestr() {
 void hrrestr() {
  unsigned long timer;
     digitalWrite( chrgpin, LOW ); 
-   analogWrite(dschrgpin, 0);
+    digitalWrite(dschrgpin, LOW);
       timer = millis();
       while (millis() < (timer + 3600000)) {
         Refresh_V_C_OLED();
@@ -58,7 +58,7 @@ void hrrestr() {
 void dayrestr() {
  unsigned long timer;
     digitalWrite( chrgpin, LOW ); 
-   analogWrite(dschrgpin, 0);
+    digitalWrite(dschrgpin, LOW);
       timer = millis();
       while (millis() < (timer + 86400000)) {
         Refresh_V_C_OLED();

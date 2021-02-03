@@ -5,7 +5,7 @@ void chargeroutine ( ) {
   Serial.println("chargerouting launched");
 while ( State == 1 ) { //whilecharging 
     digitalWrite( chrgpin, HIGH );
-   analogWrite(dschrgpin, 0);
+    digitalWrite(dschrgpin, LOW);
   while (i < (10000 / pollTime)) {//while not enough checks have been run
   i = i + 1;
   shortpause();
@@ -23,7 +23,7 @@ while ( State == 1 ) { //whilecharging
       }
     else { //return fets to charging state
       digitalWrite( chrgpin, HIGH );
-     analogWrite(dschrgpin, 0);
+      digitalWrite(dschrgpin, LOW);
       Refresh_V_C_OLED(); // gets charging voltage
       }
   }

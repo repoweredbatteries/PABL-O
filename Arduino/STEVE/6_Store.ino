@@ -4,7 +4,7 @@ void storageroutine(float pctdschrg ){
     
  while ( State == 0 ) { //discharge
 digitalWrite( chrgpin, LOW );
-analogWrite( dschrgpin, pwm );
+digitalWrite( dschrgpin, HIGH );
 Refresh_V_C_OLED();
  PowerTemp2 = PowerTemp2 + ( V * C ); //calculate Wh, counted in Ws/ number of polltime in a second, conversion to Wh done at display to retain values
  AhTemp2   = AhTemp2 +  C;
@@ -20,7 +20,7 @@ Refresh_V_C_OLED();
      }
      
 digitalWrite(chrgpin, LOW ); 
-analogWrite(dschrgpin, pwm );
+digitalWrite(dschrgpin, HIGH );
 shortpause();
 
 Refresh_V_C_OLED();

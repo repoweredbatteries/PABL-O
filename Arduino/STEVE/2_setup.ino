@@ -34,7 +34,7 @@ void setup() {
 
   digitalWrite( chrgpin, LOW ); 
   digitalWrite( chrgon, HIGH ); 
-  analogWrite(dschrgpin, 0); 
+  digitalWrite(dschrgpin, LOW); 
   Serial.println("booting");
   oled.print("booting");
 

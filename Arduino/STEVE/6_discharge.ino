@@ -4,7 +4,7 @@ void dischargeroutine( ){
     
  while ( State == 0 ) { //discharge
 digitalWrite( chrgpin, LOW );
-analogWrite( dschrgpin, pwm );
+digitalWrite( dschrgpin, HIGH );
 Refresh_V_C_OLED();
  PowerTemp = PowerTemp + ( V * C ); //calculate Wh, counted in Ws/ number of polltime in a second, conversion to Wh done at display to retain values
  AhTemp   = AhTemp +  C;
@@ -13,15 +13,14 @@ Refresh_V_C_OLED();
   //writetofile;
     
   if ( ( analogRead( A0 )*0.0048875855327468 ) < MinV ) { //if discharging and fall below minV
-    restr();
+    longrestr();
     if ( ( analogRead( A0 )*0.0048875855327468 ) < MinV ) { //if discharging and fall below minV
       State = 1; //change to charging  
-      longrestr();
     }
     }
      
 digitalWrite(chrgpin, LOW ); 
-analogWrite(dschrgpin, pwm );
+digitalWrite(dschrgpin, HIGH );
 shortpause();
 
 Refresh_V_C_OLED();
