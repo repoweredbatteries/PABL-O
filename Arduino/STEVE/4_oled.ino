@@ -1,9 +1,9 @@
 
 void Refresh_V_C_OLED() { //C refreshed separately to get accurate charge current
 
-  V = ( adc.read( A0 )*0.0048875855327468 );
+  V = ( analogRead( A0 )*0.0048875855327468 );
   V = abs(V) + vadj;
-  C = (adc.read( A1 ) *0.0048875855327468) - 24.9;
+  C = (analogRead( A1 ) *0.048875855327468) - 24.9;
   C = abs(C) + iadj;
 
   oled.clear(); 
